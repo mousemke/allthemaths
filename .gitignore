@@ -1,0 +1,4 @@
+.DS_Store
+node_modules/
+_val.config.js
+_val.modules.js
