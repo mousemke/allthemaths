@@ -26,6 +26,7 @@ module.exports = function Allthemaths( _bot, _modules, userConfig )
 
             switch ( command )
             {
+
                 case 'dance':
                     var dancer = Math.floor( Math.random() * 80 );
                     if ( dancer === 3 )
