@@ -5,15 +5,9 @@
  * they are all moved into the same namespace for intercompatability.  All option will be transfered.
  */
 
- module.exports = {
 
-    Allthemaths     : {
-        enabled : true,
-        ini     : true,
-        url     : './node_modules/allthemaths/allthemaths.js',
-        options : {
-            wordsLang               : 'en',
-            wordsChannel            : '#bots',
-        }
-    }
-};
+
+Allthemaths : {
+    enabled : true,
+    url     : './node_modules/allthemaths/allthemaths.js'
+}

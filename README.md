@@ -1,9 +1,9 @@
-allthemaths - 0.1.1
+allthemaths - 0.1.2
 ====================
 
 a collection of math utilities for use vith the val-bot ecosystem
 
-`npm i val-bot'
+`npm i val-bot`
 
 
 Installation
@@ -11,7 +11,17 @@ Installation
 
 As this is a module for _val, it will not do much without it
 
-Copy the attached config data into val's `_val.modules.js` and enable it
+Copy the module data into val's `_val.modules.js` to enable it
+
+```
+Allthemaths : {
+    enabled : true,
+    url     : './node_modules/allthemaths/allthemaths.js'
+}
+```
+
+(also available in `./config/_val.modules.example.js` )
+
 
 Ubuntu Server (or and linux environment without a grphical enviromnent)
 =======================================================================
