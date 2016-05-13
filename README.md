@@ -1,4 +1,4 @@
-allthemaths - 0.1.0
+allthemaths - 0.1.1
 ====================
 
 a collection of math utilities for use vith the val-bot ecosystem
@@ -12,6 +12,11 @@ Installation
 As this is a module for _val, it will not do much without it
 
 Copy the attached config data into val's `_val.modules.js` and enable it
+
+Ubuntu Server (or and linux environment without a grphical enviromnent)
+=======================================================================
+
+I had some trouble getting this running on the server, but [this](http://stackoverflow.com/a/34798424) post helped tons.  This outlines a fresh install to nightmare.  It should give you some missing pieces.
 
 
 Available Commands
