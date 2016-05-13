@@ -1,0 +1,20 @@
+{
+  "author": {
+    "name": "mouse@knoblau.ch"
+  },
+  "contributors": [
+    "Andy Grey <andeeeeeeeeeeee@letmeknowyouractualemailaddress.ninja>"
+  ],
+  "description": "a math utility belt for val-bot",
+  "license": "MIT",
+  "main": "allthemaths.js",
+  "name": "allthemaths",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mousemke/allthemaths.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.0"
+}
