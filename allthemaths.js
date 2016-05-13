@@ -21,31 +21,46 @@ module.exports = function Allthemaths( _bot, _modules, userConfig )
     return {
 
         /**
+         * ## toLatex
          *
+         * translates the text to an image through a latex gneerator and
+         * nightmare
+         *
+         * @param {String} from originating channel
+         * @param {String} to originating user
+         * @param {Sring} text original text minus command
+         *
+         * @return _String_ image src
          */
-        toLatex : function( from, to, _text )
+        toLatex : function( from, to, text )
         {
-            const Nightmare     = require( 'nightmare' );
+            var nightmare = new Nightmare();
 
             return new Promise( function( resolve, reject )
             {
-                var url = 'http://www.sciweavers.org/free-online-latex-equation-editor';
+                var url = 'http://www.codecogs.com/latex/eqneditor.php';
 
-                var nightmare = new Nightmare();
-                nightmare.goto( url )
-                        .type( '#texEqnEditor', _text )
-                        .click( 'input[type=submit].tex2img_iButton' )
-                        .wait( '#iImgLoader > img' )
+                return nightmare.goto( url )
+                        .wait( '#latex_formula' )
+                        .type( '#latex_formula', text )
                         .evaluate( function()
                         {
-                            var _i = document.querySelector( '#iImgLoader > img' );
+                            var _i = document.querySelector( '#equationview' );
                             return _i.src;
                         } )
                         .then( function( src )
                         {
+                            var date = ( Date.now() + '' ).slice( 8 );
+                            src = src.replace( /\?/, '?%5C200dpi%20' );
+                            src = src.replace( /gif/, 'png.' + date );
+
                             resolve( src );
                         } );
-            } ).then( _r => _r );
+            } ).then( function( _r )
+            {
+                nightmare.end();
+                return _r;
+            } );
         },
 
 
@@ -54,15 +69,14 @@ module.exports = function Allthemaths( _bot, _modules, userConfig )
          **/
         responses : function( from, to, text, botText )
         {
-            var textSplit   = text.slice( 1 ).split( ' ' );
+            var textSplit   = text.split( ' ' );
             var command     = textSplit[ 0 ];
-            var _text       = textSplit.join( ' ' );
+            var _text       = textSplit.slice( 1 ).join( ' ' );
 
             switch ( command )
             {
-
-                case 'domath':
-                    botText = toLatex( from, to, _text );
+                case 'tex':
+                    botText = this.toLatex( from, to, _text );
                     break;
             }
 
